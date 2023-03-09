@@ -1,0 +1,5 @@
+#!/bin/bash
+if[stat -c “%U hello == 'vagrant']
+then
+       	sudo chown root hello
+fi 
