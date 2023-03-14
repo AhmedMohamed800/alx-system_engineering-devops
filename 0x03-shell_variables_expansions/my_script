@@ -1,0 +1,4 @@
+#!/bin/bash
+read file_name
+touch $file_name
+chmod u+x $file_name
