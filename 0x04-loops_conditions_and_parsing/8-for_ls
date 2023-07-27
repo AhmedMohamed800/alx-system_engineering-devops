@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+for file_names in *; do
+	echo "$file_names" | cut -d "-" -f2-
+done
