@@ -1,0 +1,6 @@
+# Your machine has an SSH configuration file for the local SSH client.
+Host 385251-web-01
+User ubuntu
+HostName 54.90.47.66
+IdentityFile ~/.ssh/school
+PasswordAuthentication no
