@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # Web servers are the piece of software generating and serving HTML pages,
 
-
 echo -e "install nginx"
-sudo apt-get -y install nginx
+sudo apt-get  install nginx -y
 
 #starting the server
 sudo service nginx start
