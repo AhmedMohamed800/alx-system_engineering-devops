@@ -2,6 +2,7 @@
 # Web servers are the piece of software generating and serving HTML pages,
 
 echo -e "install nginx"
+sudo apt-get update -y -qq
 sudo apt-get  install nginx -y
 
 #starting the server
