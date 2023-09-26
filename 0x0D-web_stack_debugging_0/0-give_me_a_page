@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Debug the docker contianer
+
+apt-get update
+apt-get -y install apache2
+service apache2 start
+echo "Hello Holberton" > /var/www/public.html
+service apache2 restart
