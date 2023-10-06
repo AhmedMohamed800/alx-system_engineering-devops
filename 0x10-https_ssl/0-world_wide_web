@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # make domains
 domain_check() {
 	# list of subdomains
