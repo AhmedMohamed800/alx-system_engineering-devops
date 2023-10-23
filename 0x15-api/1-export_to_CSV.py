@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """returns information about his/her TODO list progress. """
 from csv import DictWriter, QUOTE_ALL
-import sys
 import requests
-
+import sys
 
 if __name__ == "__main__":
     EMPLOYID = int(sys.argv[1])
