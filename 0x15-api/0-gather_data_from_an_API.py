@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """returns information about his/her TODO list progress. """
-import sys
 import requests
-
+import sys
 
 if __name__ == "__main__":
     EMPLOYID = int(sys.argv[1])
@@ -21,7 +20,7 @@ if __name__ == "__main__":
             else:
                 unfinished += 1
         to = com + unfinished
-        print(f"Employee {DATA.get('name')} is done with tasks ({com}/{to}):")
+        print(f"Employee {DATA.get('name')} is done with tasks({com}/{to}):")
         for task in TASKS:
             if task.get('completed'):
                 print(f"\t {task.get('title')}")
