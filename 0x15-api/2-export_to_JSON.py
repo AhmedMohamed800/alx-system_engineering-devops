@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """returns information about his/her TODO list progress. """
-import sys
-import requests
 import json
+import requests
+import sys
 
 
 if __name__ == "__main__":
