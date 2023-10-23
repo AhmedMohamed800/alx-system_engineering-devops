@@ -1,33 +1,27 @@
 #!/usr/bin/python3
 """returns information about his/her TODO list progress. """
 import json
-import sys
 import requests
 
 
 if __name__ == "__main__":
-    USER = f"https://jsonplaceholder.typicode.com/users"
+    USER = "https://jsonplaceholder.typicode.com/users"
     response = requests.get(USER)
 
     if response.status_code == 200:
-        DATA = response.json()
-        dictTasks = []
-        for task in TASKS:
-            taskWithName = {}
-            taskWithName['task'] = task.get('title')
-            taskWithName['completed'] = task.get('completed')
-            taskWithName['username'] = DATA.get('username')
-            dictTasks.append(taskWithName)
-
-        csv_file = 'todo_all_employees'
-        with open(csv_file, 'w') as file:
+        with open('todo_all_employees.json', 'w') as file:
             dict_to_print = {}
-            for user in USER:
-                dictTasks = {}
-                use = f"userId={user.get('name')}"
+            for user in response.json():
+                dictTasks = []
+                use = f"userId={user.get('id')}"
                 TODOURL = f"https://jsonplaceholder.typicode.com/todos?{use}"
                 for task in requests.get(TODOURL).json():
-                    dict_to_print[user.get('')]
+                    taskWithName = {}
+                    taskWithName['username'] = user.get('username')
+                    taskWithName['task'] = task.get('title')
+                    taskWithName['completed'] = task.get('completed')
+                    dictTasks.append(taskWithName)
+                dict_to_print[user.get('id')] = dictTasks
             json.dump(dict_to_print, file)
     else:
         print(f"Request failed with status code: {response.status_code}")
