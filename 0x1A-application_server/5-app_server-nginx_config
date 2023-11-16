@@ -5,6 +5,8 @@ server {
 	listen      80 default_server;
         listen      [::]:80 default_server ipv6only=on;
         index index.html index.htm index.nginx-debian.html;
+	# root
+	root /home/ubuntu/AirBnB_clone_v4/web_dynamic;
 	# server's ip
         server_name 100.27.2.229;
         add_header  X-Served-By 385251-web-01;
@@ -31,6 +33,12 @@ server {
 		proxy_redirect off;
 		include proxy_params;
 		proxy_pass http://127.0.0.1:5002/api/$param;
+	}
+	# handle /
+	location / {
+		proxy_redirect off;
+		include proxy_params;
+		proxy_pass http://127.0.0.1:5003/2-hbnb;
 	}
 	# 404 error page
         error_page 404 /404.html;
