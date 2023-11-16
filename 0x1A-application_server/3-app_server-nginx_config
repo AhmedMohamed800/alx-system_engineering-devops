@@ -1,0 +1,35 @@
+# Configures Nginx to listen to the route /airbnb-onepage/
+
+server {
+        # listen to port 80
+	listen      80 default_server;
+        listen      [::]:80 default_server ipv6only=on;
+        index index.html index.htm index.nginx-debian.html;
+	# server's ip
+        server_name 100.27.2.229;
+        add_header  X-Served-By 385251-web-01;
+	#  /redirect me
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=DHITmcKUGik;
+        }
+	#  /hbnb_static
+        location /hbnb_static {
+                alias /data/web_static/current;
+        }
+	#  /airbnb-onepage
+        location /airbnb-onepage {
+                include proxy_params;
+                proxy_pass http://localhost:5000/airbnb-onepage;
+        }
+	# location /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+	location /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        	include proxy_params;
+		proxy_pass http://localhost:5000/airbnb-dynamic/number_odd_or_even/$1;
+	}
+	# 404 error page
+        error_page 404 /404.html;
+        location /404 {
+                root /var/www/error/;
+                internal;
+        }
+}
